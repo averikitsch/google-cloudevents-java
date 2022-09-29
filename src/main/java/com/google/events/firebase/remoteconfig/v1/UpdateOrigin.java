@@ -21,7 +21,12 @@ import java.io.IOException;
 /**
  * Where the update action originated.
  */
-public class UpdateOrigin {
-    public Long integerValue;
-    public UpdateOriginEnum enumValue;
+enum UpdateOrigin {
+    REMOTE_CONFIG_UPDATE_ORIGIN_UNSPECIFIED,
+    // The update came from the Firebase UI.
+    CONSOLE,  
+    // The update came from the Remote Config REST API.
+    REST_API,  
+    // The update came from the Firebase Admin Node SDK.
+    ADMIN_SDK_NODE
 }

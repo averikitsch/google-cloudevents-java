@@ -27,7 +27,7 @@ import java.util.Map;
 public class Message {
     private Map<String, String> attributes;
     private String data;
-    private String messageID;
+    private String messageId;
     private String orderingKey;
     private OffsetDateTime publishTime;
 
@@ -44,11 +44,11 @@ public class Message {
     public void setData(String value) { this.data = value; }
 
     /**
-     * ID of this message, assigned by the server when the message is published.
+     * Id of this message, assigned by the server when the message is published.
      * Guaranteed to be unique within the topic.
      */
-    public String getMessageID() { return messageID; }
-    public void setMessageID(String value) { this.messageID = value; }
+    public String getMessageId() { return messageId; }
+    public void setMessageId(String value) { this.messageId = value; }
 
     /**
      * If non-empty, identifies related messages for which publish order should be

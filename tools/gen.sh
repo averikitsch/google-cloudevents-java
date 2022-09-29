@@ -19,10 +19,11 @@ set -e
 # Delete current types (not tests)
 rm -rf src/main
 
+export ENUM_AS_STRING=true
 # Generate new types
 qt \
---in=$(dirname $PWD)/google-cloudevents/jsonschema \
---out=$PWD \
+--in=../../jsonschema \
+--out=./java \
 --l=java
 
 # Move types to correct directory

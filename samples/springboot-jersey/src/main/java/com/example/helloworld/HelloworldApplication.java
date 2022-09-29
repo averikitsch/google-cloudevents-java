@@ -1,11 +1,11 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     https://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package com.google.events.cloud.cloudbuild.v1;
+package com.example.helloworld;
 
-import java.io.IOException;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * Option to specify behavior when there is an error in the substitution
- * checks.
- */
-enum SubstitutionOption {
-    MUST_MATCH,
-    ALLOW_LOOSE
+@SpringBootApplication
+public class HelloworldApplication {
+  public static void main(String[] args) {
+    SpringApplication.run(HelloworldApplication.class, args);
+  }
 }
