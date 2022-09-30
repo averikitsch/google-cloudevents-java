@@ -17,6 +17,11 @@
 package functions;
 
 
+import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
+import java.time.OffsetDateTime;
+import java.util.logging.Logger;
+
 import com.google.cloud.functions.CloudEventsFunction;
 import com.google.events.cloud.audit.v1.LogEntryData;
 import com.google.gson.Gson;
@@ -25,11 +30,8 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+
 import io.cloudevents.CloudEvent;
-import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
-import java.time.OffsetDateTime;
-import java.util.logging.Logger;
 
 // Uses the Gson library to unmarshal CloudEvent data
 public class HelloCloudEventGson implements CloudEventsFunction {
@@ -52,11 +54,13 @@ public class HelloCloudEventGson implements CloudEventsFunction {
             .registerTypeAdapter(OffsetDateTime.class, new DateDeserializer())
             .create();
 
-    if (event.getData() != null && event.getType().contains("audit")) {
+    if (event.getData() != null ) { // && event.getType().contains("audit")
       // Get serialized data from CloudEvent
       String cloudEventData = new String(event.getData().toBytes(), StandardCharsets.UTF_8);
       // Deserialize data to unmarshal the data
+      logger.info(cloudEventData);
       LogEntryData data = gson.fromJson(cloudEventData, LogEntryData.class);
+      logger.info(data.toString());
       logger.info(data.getProtoPayload().getAuthenticationInfo().getPrincipalEmail());
       logger.info(data.getResource().getType());
     }

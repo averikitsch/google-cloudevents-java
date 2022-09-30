@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,41 +19,10 @@ package com.google.events.cloud.audit.v1;
 /**
  * Authorization information for the operation.
  */
+@lombok.Data
 public class AuthorizationInfo {
     private Boolean granted;
     private String permission;
     private String resource;
     private ResourceAttributesClass resourceAttributes;
-
-    /**
-     * Whether or not authorization for `resource` and `permission`
-     * was granted.
-     */
-    public Boolean getGranted() { return granted; }
-    public void setGranted(Boolean value) { this.granted = value; }
-
-    /**
-     * The required IAM permission.
-     */
-    public String getPermission() { return permission; }
-    public void setPermission(String value) { this.permission = value; }
-
-    /**
-     * The resource being accessed, as a REST-style string. For example:
-     *
-     * bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID
-     */
-    public String getResource() { return resource; }
-    public void setResource(String value) { this.resource = value; }
-
-    /**
-     * Resource attributes used in IAM condition evaluation. This field contains
-     * resource attributes like resource type and resource name.
-     *
-     * To get the whole view of the attributes used in IAM
-     * condition evaluation, the user must also look into
-     * `AuditLogData.request_metadata.request_attributes`.
-     */
-    public ResourceAttributesClass getResourceAttributes() { return resourceAttributes; }
-    public void setResourceAttributes(ResourceAttributesClass value) { this.resourceAttributes = value; }
 }

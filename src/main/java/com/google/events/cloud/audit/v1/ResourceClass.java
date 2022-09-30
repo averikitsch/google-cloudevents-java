@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,35 +19,17 @@ package com.google.events.cloud.audit.v1;
 import java.util.Map;
 
 /**
- * The monitored resource that produced this log entry.
- *
- * Example: a log entry that reports a database error would be associated with
- * the monitored resource designating the particular database that reported
- * the error.
+ * The monitored resource that produced this log entry. Example: a log entry that reports a
+ * database error would be associated with the monitored resource designating the particular
+ * database that reported the error.
  *
  * Note: this is a much-reduced version of the proto at
  * https://github.com/googleapis/googleapis/blob/master/google/api/monitored_resource.proto
- * to avoid other dependencies leaking into events.
- *
- * An object representing a resource that can be used for monitoring, logging,
- * billing, or other purposes.
+ * to avoid other dependencies leaking into events.  An object representing a resource that
+ * can be used for monitoring, logging, billing, or other purposes.
  */
+@lombok.Data
 public class ResourceClass {
     private Map<String, String> labels;
     private String type;
-
-    /**
-     * Values for all of the labels listed in the associated monitored
-     * resource descriptor. For example, Compute Engine VM instances use the
-     * labels `"project_id"`, `"instance_id"`, and `"zone"`.
-     */
-    public Map<String, String> getLabels() { return labels; }
-    public void setLabels(Map<String, String> value) { this.labels = value; }
-
-    /**
-     * Required. The monitored resource type. For example, the type of a
-     * Compute Engine VM instance is `gce_instance`.
-     */
-    public String getType() { return type; }
-    public void setType(String value) { this.type = value; }
 }

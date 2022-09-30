@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,26 +21,9 @@ package com.google.events.firebase.analytics.v1;
  *
  * Mesage containing marketing campaign information which acquired the user.
  */
+@lombok.Data
 public class TrafficSource {
     private String userAcquiredCampaign;
     private String userAcquiredMedium;
     private String userAcquiredSource;
-
-    /**
-     * The name of the campaign which acquired the user.
-     */
-    public String getUserAcquiredCampaign() { return userAcquiredCampaign; }
-    public void setUserAcquiredCampaign(String value) { this.userAcquiredCampaign = value; }
-
-    /**
-     * The name of the medium which acquired the user.
-     */
-    public String getUserAcquiredMedium() { return userAcquiredMedium; }
-    public void setUserAcquiredMedium(String value) { this.userAcquiredMedium = value; }
-
-    /**
-     * The name of the network which acquired the user.
-     */
-    public String getUserAcquiredSource() { return userAcquiredSource; }
-    public void setUserAcquiredSource(String value) { this.userAcquiredSource = value; }
 }

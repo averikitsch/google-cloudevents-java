@@ -51,7 +51,7 @@
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloudevent-types</artifactId>
-      <version>0.5.1-SNAPSHOT</version>
+      <version>0.5.4-SNAPSHOT</version>
     </dependency>
     <!-- Required for Function primitives -->
     <dependency>

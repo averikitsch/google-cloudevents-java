@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,19 +25,8 @@ import java.time.OffsetDateTime;
  *
  * Start and end times for a build execution phase.
  */
+@lombok.Data
 public class ArtifactTiming {
     private OffsetDateTime endTime;
     private OffsetDateTime startTime;
-
-    /**
-     * End of time span.
-     */
-    public OffsetDateTime getEndTime() { return endTime; }
-    public void setEndTime(OffsetDateTime value) { this.endTime = value; }
-
-    /**
-     * Start of time span.
-     */
-    public OffsetDateTime getStartTime() { return startTime; }
-    public void setStartTime(OffsetDateTime value) { this.startTime = value; }
 }

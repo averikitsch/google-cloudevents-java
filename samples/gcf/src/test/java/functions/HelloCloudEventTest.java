@@ -35,7 +35,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-/** Unit tests for main.java.com.example.functions.helloworld.HelloGcs. */
 public class HelloCloudEventTest {
   private static final TestLogHandler LOG_HANDLER = new TestLogHandler();
   private static final Logger logger = Logger.getLogger(HelloCloudEvent.class.getName());

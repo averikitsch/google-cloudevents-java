@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,19 +21,8 @@ import java.time.OffsetDateTime;
 /**
  * Additional metadata about the user.
  */
+@lombok.Data
 public class Metadata {
     private OffsetDateTime createTime;
     private OffsetDateTime lastSignInTime;
-
-    /**
-     * The date the user was created.
-     */
-    public OffsetDateTime getCreateTime() { return createTime; }
-    public void setCreateTime(OffsetDateTime value) { this.createTime = value; }
-
-    /**
-     * The date the user last signed in.
-     */
-    public OffsetDateTime getLastSignInTime() { return lastSignInTime; }
-    public void setLastSignInTime(OffsetDateTime value) { this.lastSignInTime = value; }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,27 +19,11 @@ package com.google.events.cloud.cloudbuild.v1;
 import java.util.Map;
 
 /**
- * Pairs a set of secret environment variables containing encrypted
- * values with the Cloud KMS key to use to decrypt the value.
+ * Pairs a set of secret environment variables containing encrypted values with the Cloud
+ * KMS key to use to decrypt the value.
  */
+@lombok.Data
 public class Secret {
     private String kmsKeyName;
     private Map<String, String> secretEnv;
-
-    /**
-     * Cloud KMS key name to use to decrypt these envs.
-     */
-    public String getKmsKeyName() { return kmsKeyName; }
-    public void setKmsKeyName(String value) { this.kmsKeyName = value; }
-
-    /**
-     * Map of environment variable name to its encrypted value.
-     *
-     * Secret environment variables must be unique across all of a build's
-     * secrets, and must be used by at least one build step. Values can be at most
-     * 64 KB in size. There can be at most 100 secret values across all of a
-     * build's secrets.
-     */
-    public Map<String, String> getSecretEnv() { return secretEnv; }
-    public void setSecretEnv(Map<String, String> value) { this.secretEnv = value; }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,24 +19,12 @@ package com.google.events.firebase.analytics.v1;
 /**
  * Last set value of user property.
  *
- * Value for Event Params and UserProperty can be of type string or int or
- * float or double.
+ * Value for Event Params and UserProperty can be of type string or int or float or double.
  */
+@lombok.Data
 public class Value {
     private Double doubleValue;
     private Double floatValue;
     private Long intValue;
     private String stringValue;
-
-    public Double getDoubleValue() { return doubleValue; }
-    public void setDoubleValue(Double value) { this.doubleValue = value; }
-
-    public Double getFloatValue() { return floatValue; }
-    public void setFloatValue(Double value) { this.floatValue = value; }
-
-    public Long getIntValue() { return intValue; }
-    public void setIntValue(Long value) { this.intValue = value; }
-
-    public String getStringValue() { return stringValue; }
-    public void setStringValue(String value) { this.stringValue = value; }
 }

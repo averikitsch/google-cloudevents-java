@@ -26,6 +26,7 @@ public class TestController {
         new String(Base64.getDecoder().decode(message.getData()), StandardCharsets.UTF_8));
     System.out.println(message.getMessageId());
     System.out.println(headers.get("ce-source"));
+    System.out.println(message.toString());
 
     return new ResponseEntity<String>("received!", HttpStatus.OK);
   }

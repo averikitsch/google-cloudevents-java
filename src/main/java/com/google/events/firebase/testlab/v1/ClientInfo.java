@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,19 +23,8 @@ import java.util.Map;
  *
  * Information about the client which invoked the test.
  */
+@lombok.Data
 public class ClientInfo {
     private String client;
     private Map<String, String> details;
-
-    /**
-     * Client name, such as "gcloud".
-     */
-    public String getClient() { return client; }
-    public void setClient(String value) { this.client = value; }
-
-    /**
-     * Map of detailed information about the client.
-     */
-    public Map<String, String> getDetails() { return details; }
-    public void setDetails(Map<String, String> value) { this.details = value; }
 }

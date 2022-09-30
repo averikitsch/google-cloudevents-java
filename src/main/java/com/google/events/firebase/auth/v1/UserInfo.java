@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,40 +19,11 @@ package com.google.events.firebase.auth.v1;
 /**
  * User's info at the identity provider
  */
+@lombok.Data
 public class UserInfo {
     private String displayName;
     private String email;
-    private String photoURL;
-    private String providerID;
+    private String photoUrl;
+    private String providerId;
     private String uid;
-
-    /**
-     * The display name for the linked provider.
-     */
-    public String getDisplayName() { return displayName; }
-    public void setDisplayName(String value) { this.displayName = value; }
-
-    /**
-     * The email for the linked provider.
-     */
-    public String getEmail() { return email; }
-    public void setEmail(String value) { this.email = value; }
-
-    /**
-     * The photo URL for the linked provider.
-     */
-    public String getPhotoURL() { return photoURL; }
-    public void setPhotoURL(String value) { this.photoURL = value; }
-
-    /**
-     * The linked provider ID (e.g. "google.com" for the Google provider).
-     */
-    public String getProviderID() { return providerID; }
-    public void setProviderID(String value) { this.providerID = value; }
-
-    /**
-     * The user identifier for the linked provider.
-     */
-    public String getUid() { return uid; }
-    public void setUid(String value) { this.uid = value; }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,15 @@
 
 package com.google.events.cloud.firestore.v1;
 
+import java.util.List;
+
 /**
- * An array value.
- *
- * Cannot directly contain another array value, though can contain an
- * map which contains another array.
+ * An array value. Cannot directly contain another array value, though can contain an map
+ * which contains another array.
  *
  * An array value.
  */
+@lombok.Data
 public class ArrayValue {
-    private ValueElement[] values;
-
-    /**
-     * Values in the array.
-     */
-    public ValueElement[] getValues() { return values; }
-    public void setValues(ValueElement[] value) { this.values = value; }
+    private List<ValueElement> values;
 }

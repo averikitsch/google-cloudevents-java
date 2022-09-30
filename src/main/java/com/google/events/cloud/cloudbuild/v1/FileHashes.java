@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,13 @@
 
 package com.google.events.cloud.cloudbuild.v1;
 
-/**
- * Container message for hashes of byte content of files, used in
- * SourceProvenance messages to verify integrity of source input to the build.
- */
-public class FileHashes {
-    private Hash[] fileHash;
+import java.util.List;
 
-    /**
-     * Collection of file hashes.
-     */
-    public Hash[] getFileHash() { return fileHash; }
-    public void setFileHash(Hash[] value) { this.fileHash = value; }
+/**
+ * Container message for hashes of byte content of files, used in SourceProvenance messages
+ * to verify integrity of source input to the build.
+ */
+@lombok.Data
+public class FileHashes {
+    private List<Hash> fileHash;
 }

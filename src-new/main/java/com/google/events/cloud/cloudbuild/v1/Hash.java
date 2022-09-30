@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,24 @@
  * limitations under the License.
  */
 
-package com.google.events.firebase.remoteconfig.v1;
-
-import java.io.IOException;
+package com.google.events.cloud.cloudbuild.v1;
 
 /**
- * Where the update action originated.
+ * Container message for hash values.
  */
-enum UpdateOrigin {
-    REMOTE_CONFIG_UPDATE_ORIGIN_UNSPECIFIED,
-    // The update came from the Firebase UI.
-    CONSOLE,  
-    // The update came from the Remote Config REST API.
-    REST_API,  
-    // The update came from the Firebase Admin Node SDK.
-    ADMIN_SDK_NODE
+public class Hash {
+    private SourceProvenanceHashEnum type;
+    private String value;
+
+    /**
+     * Specifies the hash algorithm, if any.
+     */
+    public SourceProvenanceHashEnum getType() { return type; }
+    public void setType(SourceProvenanceHashEnum value) { this.type = value; }
+
+    /**
+     * The hash value.
+     */
+    public String getValue() { return value; }
+    public void setValue(String value) { this.value = value; }
 }

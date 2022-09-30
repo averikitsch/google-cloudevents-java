@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,21 +19,8 @@ package com.google.events.cloud.pubsub.v1;
 /**
  * The event data when a message is published to a topic.
  */
+@lombok.Data
 public class MessagePublishedData {
     private Message message;
     private String subscription;
-
-    /**
-     * The message that was published.
-     */
-    public Message getMessage() { return message; }
-    public void setMessage(Message value) { this.message = value; }
-
-    /**
-     * The resource name of the subscription for which this event was
-     * generated. The format of the value is
-     * `projects/{project-id}/subscriptions/{subscription-id}`.
-     */
-    public String getSubscription() { return subscription; }
-    public void setSubscription(String value) { this.subscription = value; }
 }

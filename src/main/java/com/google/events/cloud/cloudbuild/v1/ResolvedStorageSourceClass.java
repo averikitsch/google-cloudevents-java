@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,36 +17,15 @@
 package com.google.events.cloud.cloudbuild.v1;
 
 /**
- * A copy of the build's `source.storage_source`, if exists, with any
- * generations resolved.
+ * A copy of the build's `source.storage_source`, if exists, with any generations resolved.
  *
  * If provided, get the source from this location in Google Cloud Storage.
  *
  * Location of the source in an archive file in Google Cloud Storage.
  */
+@lombok.Data
 public class ResolvedStorageSourceClass {
     private String bucket;
     private Long generation;
     private String object;
-
-    /**
-     * Google Cloud Storage bucket containing the source (see
-     * [Bucket Name
-     * Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-     */
-    public String getBucket() { return bucket; }
-    public void setBucket(String value) { this.bucket = value; }
-
-    /**
-     * Google Cloud Storage generation for the object. If the generation is
-     * omitted, the latest generation will be used.
-     */
-    public Long getGeneration() { return generation; }
-    public void setGeneration(Long value) { this.generation = value; }
-
-    /**
-     * Google Cloud Storage object containing the source.
-     */
-    public String getObject() { return object; }
-    public void setObject(String value) { this.object = value; }
 }

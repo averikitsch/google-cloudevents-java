@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,20 +19,13 @@ package com.google.events.cloud.audit.v1;
 import java.io.IOException;
 
 /**
- * The severity of the log entry.
+ * The severity of the event described in a log entry, expressed as one of the standard
+ * severity levels listed below.  For your reference, the levels are assigned the listed
+ * numeric values. The effect of using numeric values other than those listed is undefined.
+ * Copied from
+ * https://github.com/googleapis/googleapis/blob/master/google/logging/type/log_severity.proto
  */
-// enum Severity {
-//     DEFAULT,
-//     DEBUG,
-//     INFO,
-//     NOTICE,
-//     WARNING,
-//     ERROR,
-//     CRITICAL,
-//     ALERT,
-//     EMERGENCY
-// }
-public enum Severity {
+public enum LogSeverity {
     ALERT, CRITICAL, DEBUG, DEFAULT, EMERGENCY, ERROR, INFO, NOTICE, WARNING;
 
     public String toValue() {
@@ -50,7 +43,7 @@ public enum Severity {
         return null;
     }
 
-    public static Severity forValue(String value) throws IOException {
+    public static LogSeverity forValue(String value) throws IOException {
         if (value.equals("ALERT")) return ALERT;
         if (value.equals("CRITICAL")) return CRITICAL;
         if (value.equals("DEBUG")) return DEBUG;

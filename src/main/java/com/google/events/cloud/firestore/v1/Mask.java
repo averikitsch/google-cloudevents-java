@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,15 @@
 
 package com.google.events.cloud.firestore.v1;
 
+import java.util.List;
+
 /**
- * A DocumentMask object that lists changed fields.
- * This is only populated for update events.
+ * A DocumentMask object that lists changed fields. This is only populated for update
+ * events.
  *
  * A set of field paths on a document.
  */
+@lombok.Data
 public class Mask {
-    private String[] fieldPaths;
-
-    /**
-     * The list of field paths in the mask.
-     * See [Document.fields][google.cloud.firestore.v1.events.Document.fields]
-     * for a field path syntax reference.
-     */
-    public String[] getFieldPaths() { return fieldPaths; }
-    public void setFieldPaths(String[] value) { this.fieldPaths = value; }
+    private List<String> fieldPaths;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,19 +23,8 @@ import java.util.Map;
  *
  * First party identity principal.
  */
+@lombok.Data
 public class FirstPartyPrincipal {
     private String principalEmail;
     private Map<String, Object> serviceMetadata;
-
-    /**
-     * The email address of a Google account.
-     */
-    public String getPrincipalEmail() { return principalEmail; }
-    public void setPrincipalEmail(String value) { this.principalEmail = value; }
-
-    /**
-     * Metadata about the service that uses the service account.
-     */
-    public Map<String, Object> getServiceMetadata() { return serviceMetadata; }
-    public void setServiceMetadata(Map<String, Object> value) { this.serviceMetadata = value; }
 }

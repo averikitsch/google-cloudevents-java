@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,7 @@ package com.google.events.cloud.scheduler.v1;
 /**
  * Scheduler job data.
  */
+@lombok.Data
 public class SchedulerJobData {
     private String customData;
-
-    /**
-     * The custom data the user specified when creating the scheduler source.
-     */
-    public String getCustomData() { return customData; }
-    public void setCustomData(String value) { this.customData = value; }
 }

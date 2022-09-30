@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,43 +24,11 @@ import java.util.Map;
  *
  * A message published to a topic.
  */
+@lombok.Data
 public class Message {
     private Map<String, String> attributes;
     private String data;
     private String messageId;
     private String orderingKey;
     private OffsetDateTime publishTime;
-
-    /**
-     * Attributes for this message.
-     */
-    public Map<String, String> getAttributes() { return attributes; }
-    public void setAttributes(Map<String, String> value) { this.attributes = value; }
-
-    /**
-     * The binary data in the message.
-     */
-    public String getData() { return data; }
-    public void setData(String value) { this.data = value; }
-
-    /**
-     * Id of this message, assigned by the server when the message is published.
-     * Guaranteed to be unique within the topic.
-     */
-    public String getMessageId() { return messageId; }
-    public void setMessageId(String value) { this.messageId = value; }
-
-    /**
-     * If non-empty, identifies related messages for which publish order should be
-     * respected.
-     */
-    public String getOrderingKey() { return orderingKey; }
-    public void setOrderingKey(String value) { this.orderingKey = value; }
-
-    /**
-     * The time at which the message was published, populated by the server when
-     * it receives the `Publish` call.
-     */
-    public OffsetDateTime getPublishTime() { return publishTime; }
-    public void setPublishTime(OffsetDateTime value) { this.publishTime = value; }
 }

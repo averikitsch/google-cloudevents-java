@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,19 +19,8 @@ package com.google.events.firebase.analytics.v1;
 /**
  * Lifetime Value information about this user.
  */
+@lombok.Data
 public class LtvInfo {
     private String currency;
     private Double revenue;
-
-    /**
-     * The currency corresponding to the revenue.
-     */
-    public String getCurrency() { return currency; }
-    public void setCurrency(String value) { this.currency = value; }
-
-    /**
-     * The Lifetime Value revenue of this user.
-     */
-    public Double getRevenue() { return revenue; }
-    public void setRevenue(Double value) { this.revenue = value; }
 }

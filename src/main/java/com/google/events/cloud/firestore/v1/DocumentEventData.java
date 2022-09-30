@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,29 +19,9 @@ package com.google.events.cloud.firestore.v1;
 /**
  * The data within all Firestore document events.
  */
+@lombok.Data
 public class DocumentEventData {
     private OldValue oldValue;
     private Mask updateMask;
     private Value value;
-
-    /**
-     * A Document object containing a pre-operation document snapshot.
-     * This is only populated for update and delete events.
-     */
-    public OldValue getOldValue() { return oldValue; }
-    public void setOldValue(OldValue value) { this.oldValue = value; }
-
-    /**
-     * A DocumentMask object that lists changed fields.
-     * This is only populated for update events.
-     */
-    public Mask getUpdateMask() { return updateMask; }
-    public void setUpdateMask(Mask value) { this.updateMask = value; }
-
-    /**
-     * A Document object containing a post-operation document snapshot.
-     * This is not populated for delete events.
-     */
-    public Value getValue() { return value; }
-    public void setValue(Value value) { this.value = value; }
 }

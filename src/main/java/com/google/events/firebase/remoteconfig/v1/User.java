@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,32 +17,14 @@
 package com.google.events.firebase.remoteconfig.v1;
 
 /**
- * Aggregation of all metadata fields about the account that performed the
- * update.
+ * Aggregation of all metadata fields about the account that performed the  update.
  *
- * All the fields associated with the person/service account
- * that wrote a Remote Config template.
+ * All the fields associated with the person/service account that wrote a Remote Config
+ * template.
  */
+@lombok.Data
 public class User {
     private String email;
-    private String imageURL;
+    private String imageUrl;
     private String name;
-
-    /**
-     * Email address.
-     */
-    public String getEmail() { return email; }
-    public void setEmail(String value) { this.email = value; }
-
-    /**
-     * Image URL.
-     */
-    public String getImageURL() { return imageURL; }
-    public void setImageURL(String value) { this.imageURL = value; }
-
-    /**
-     * Display name.
-     */
-    public String getName() { return name; }
-    public void setName(String value) { this.name = value; }
 }

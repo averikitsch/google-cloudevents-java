@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,37 +21,10 @@ package com.google.events.firebase.analytics.v1;
  *
  * User's geographic informaiton.
  */
+@lombok.Data
 public class GeoInfo {
     private String city;
     private String continent;
     private String country;
     private String region;
-
-    /**
-     * The geographic city.
-     * Eg. Sao Paulo
-     */
-    public String getCity() { return city; }
-    public void setCity(String value) { this.city = value; }
-
-    /**
-     * The geographic continent.
-     * Eg. Americas
-     */
-    public String getContinent() { return continent; }
-    public void setContinent(String value) { this.continent = value; }
-
-    /**
-     * The geographic country.
-     * Eg. Brazil
-     */
-    public String getCountry() { return country; }
-    public void setCountry(String value) { this.country = value; }
-
-    /**
-     * The geographic region.
-     * Eg. State of Sao Paulo
-     */
-    public String getRegion() { return region; }
-    public void setRegion(String value) { this.region = value; }
 }

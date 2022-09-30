@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,12 +23,7 @@ import java.util.Map;
  *
  * Third party identity principal.
  */
+@lombok.Data
 public class ThirdPartyPrincipal {
     private Map<String, Object> thirdPartyClaims;
-
-    /**
-     * Metadata about third party identity.
-     */
-    public Map<String, Object> getThirdPartyClaims() { return thirdPartyClaims; }
-    public void setThirdPartyClaims(Map<String, Object> value) { this.thirdPartyClaims = value; }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,27 +19,9 @@ package com.google.events.cloud.cloudbuild.v1;
 /**
  * An image built by the pipeline.
  */
+@lombok.Data
 public class BuiltImage {
     private String digest;
     private String name;
     private PushTiming pushTiming;
-
-    /**
-     * Docker Registry 2.0 digest.
-     */
-    public String getDigest() { return digest; }
-    public void setDigest(String value) { this.digest = value; }
-
-    /**
-     * Name used to push the container image to Google Container Registry, as
-     * presented to `docker push`.
-     */
-    public String getName() { return name; }
-    public void setName(String value) { this.name = value; }
-
-    /**
-     * Stores timing information for pushing the specified image.
-     */
-    public PushTiming getPushTiming() { return pushTiming; }
-    public void setPushTiming(PushTiming value) { this.pushTiming = value; }
 }

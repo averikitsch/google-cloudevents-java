@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,13 @@
 
 package com.google.events.firebase.auth.v1;
 
+import java.util.List;
 import java.util.Map;
 
 /**
  * The data within all Firebase Auth events.
  */
+@lombok.Data
 public class AuthEventData {
     private Map<String, Object> customClaims;
     private Boolean disabled;
@@ -29,68 +31,7 @@ public class AuthEventData {
     private Boolean emailVerified;
     private Metadata metadata;
     private String phoneNumber;
-    private String photoURL;
-    private UserInfo[] providerData;
+    private String photoUrl;
+    private List<UserInfo> providerData;
     private String uid;
-
-    /**
-     * User's custom claims, typically used to define user roles and propagated
-     * to an authenticated user's ID token.
-     */
-    public Map<String, Object> getCustomClaims() { return customClaims; }
-    public void setCustomClaims(Map<String, Object> value) { this.customClaims = value; }
-
-    /**
-     * Whether the user is disabled.
-     */
-    public Boolean getDisabled() { return disabled; }
-    public void setDisabled(Boolean value) { this.disabled = value; }
-
-    /**
-     * The user's display name.
-     */
-    public String getDisplayName() { return displayName; }
-    public void setDisplayName(String value) { this.displayName = value; }
-
-    /**
-     * The user's primary email, if set.
-     */
-    public String getEmail() { return email; }
-    public void setEmail(String value) { this.email = value; }
-
-    /**
-     * Whether or not the user's primary email is verified.
-     */
-    public Boolean getEmailVerified() { return emailVerified; }
-    public void setEmailVerified(Boolean value) { this.emailVerified = value; }
-
-    /**
-     * Additional metadata about the user.
-     */
-    public Metadata getMetadata() { return metadata; }
-    public void setMetadata(Metadata value) { this.metadata = value; }
-
-    /**
-     * The user's phone number.
-     */
-    public String getPhoneNumber() { return phoneNumber; }
-    public void setPhoneNumber(String value) { this.phoneNumber = value; }
-
-    /**
-     * The user's photo URL.
-     */
-    public String getPhotoURL() { return photoURL; }
-    public void setPhotoURL(String value) { this.photoURL = value; }
-
-    /**
-     * User's info at the providers
-     */
-    public UserInfo[] getProviderData() { return providerData; }
-    public void setProviderData(UserInfo[] value) { this.providerData = value; }
-
-    /**
-     * The user identifier in the Firebase app.
-     */
-    public String getUid() { return uid; }
-    public void setUid(String value) { this.uid = value; }
 }

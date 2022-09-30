@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,19 +19,8 @@ package com.google.events.cloud.audit.v1;
 /**
  * Identity delegation history of an authenticated service account.
  */
+@lombok.Data
 public class ServiceAccountDelegationInfo {
     private FirstPartyPrincipal firstPartyPrincipal;
     private ThirdPartyPrincipal thirdPartyPrincipal;
-
-    /**
-     * First party (Google) identity as the real authority.
-     */
-    public FirstPartyPrincipal getFirstPartyPrincipal() { return firstPartyPrincipal; }
-    public void setFirstPartyPrincipal(FirstPartyPrincipal value) { this.firstPartyPrincipal = value; }
-
-    /**
-     * Third party identity as the real authority.
-     */
-    public ThirdPartyPrincipal getThirdPartyPrincipal() { return thirdPartyPrincipal; }
-    public void setThirdPartyPrincipal(ThirdPartyPrincipal value) { this.thirdPartyPrincipal = value; }
 }

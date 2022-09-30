@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,29 +17,12 @@
 package com.google.events.firebase.analytics.v1;
 
 /**
- * Predefined (eg: LTV) or custom properties (eg: birthday) stored on client
- * side and associated with subsequent HitBundles.
+ * Predefined (eg: LTV) or custom properties (eg: birthday) stored on client side and
+ * associated with subsequent HitBundles.
  */
+@lombok.Data
 public class UserPropertyValue {
     private Long index;
     private Long setTimestampUsec;
     private Value value;
-
-    /**
-     * Index for user property (one-based).
-     */
-    public Long getIndex() { return index; }
-    public void setIndex(Long value) { this.index = value; }
-
-    /**
-     * UTC client time when user property was last set.
-     */
-    public Long getSetTimestampUsec() { return setTimestampUsec; }
-    public void setSetTimestampUsec(Long value) { this.setTimestampUsec = value; }
-
-    /**
-     * Last set value of user property.
-     */
-    public Value getValue() { return value; }
-    public void setValue(Value value) { this.value = value; }
 }

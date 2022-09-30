@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,19 +19,8 @@ package com.google.events.cloud.cloudbuild.v1;
 /**
  * Container message for hash values.
  */
+@lombok.Data
 public class Hash {
-    private Type type;
+    private SourceProvenanceHashEnum type;
     private String value;
-
-    /**
-     * The type of hash that was performed.
-     */
-    public Type getType() { return type; }
-    public void setType(Type value) { this.type = value; }
-
-    /**
-     * The hash value.
-     */
-    public String getValue() { return value; }
-    public void setValue(String value) { this.value = value; }
 }

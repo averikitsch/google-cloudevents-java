@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,34 +16,14 @@
 
 package com.google.events.firebase.database.v1;
 
+import java.util.List;
 import java.util.Map;
 
 /**
  * The data within all Firebase Real Time Database reference events.
  */
+@lombok.Data
 public class ReferenceEventData {
-    private Data data;
-    private Data delta;
-
-    /**
-     * `Value` represents a dynamically typed value which can be either
-     * null, a number, a string, a boolean, a recursive struct value, or a
-     * list of values. A producer of value is expected to set one of that
-     * variants, absence of any variant indicates an error.
-     *
-     * The JSON representation for `Value` is JSON value.
-     */
-    public Data getData() { return data; }
-    public void setData(Data value) { this.data = value; }
-
-    /**
-     * `Value` represents a dynamically typed value which can be either
-     * null, a number, a string, a boolean, a recursive struct value, or a
-     * list of values. A producer of value is expected to set one of that
-     * variants, absence of any variant indicates an error.
-     *
-     * The JSON representation for `Value` is JSON value.
-     */
-    public Data getDelta() { return delta; }
-    public void setDelta(Data value) { this.delta = value; }
+    private Value data;
+    private Value delta;
 }

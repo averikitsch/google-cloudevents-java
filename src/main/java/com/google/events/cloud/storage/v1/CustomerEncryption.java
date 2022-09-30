@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,24 +17,12 @@
 package com.google.events.cloud.storage.v1;
 
 /**
- * Metadata of customer-supplied encryption key, if the object is encrypted by
- * such a key.
+ * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
  *
  * Describes the customer-specified mechanism used to store the data at rest.
  */
+@lombok.Data
 public class CustomerEncryption {
     private String encryptionAlgorithm;
     private String keySha256;
-
-    /**
-     * The encryption algorithm.
-     */
-    public String getEncryptionAlgorithm() { return encryptionAlgorithm; }
-    public void setEncryptionAlgorithm(String value) { this.encryptionAlgorithm = value; }
-
-    /**
-     * SHA256 hash value of the encryption key.
-     */
-    public String getKeySha256() { return keySha256; }
-    public void setKeySha256(String value) { this.keySha256 = value; }
 }

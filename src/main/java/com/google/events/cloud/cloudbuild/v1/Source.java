@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,20 +19,8 @@ package com.google.events.cloud.cloudbuild.v1;
 /**
  * The location of the source files to build.
  */
+@lombok.Data
 public class Source {
     private RepoSourceClass repoSource;
     private StorageSourceClass storageSource;
-
-    /**
-     * If provided, get the source from this location in a Cloud Source
-     * Repository.
-     */
-    public RepoSourceClass getRepoSource() { return repoSource; }
-    public void setRepoSource(RepoSourceClass value) { this.repoSource = value; }
-
-    /**
-     * If provided, get the source from this location in Google Cloud Storage.
-     */
-    public StorageSourceClass getStorageSource() { return storageSource; }
-    public void setStorageSource(StorageSourceClass value) { this.storageSource = value; }
 }

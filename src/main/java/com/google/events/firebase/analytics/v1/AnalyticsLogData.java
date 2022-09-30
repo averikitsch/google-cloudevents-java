@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,13 @@
 
 package com.google.events.firebase.analytics.v1;
 
+import java.util.List;
+
 /**
  * The data within Firebase Analytics log events.
  */
+@lombok.Data
 public class AnalyticsLogData {
-    private EventDimensions[] eventDim;
+    private List<EventDimensions> eventDim;
     private UserDim userDim;
-
-    /**
-     * A repeated record of event related dimensions.
-     */
-    public EventDimensions[] getEventDim() { return eventDim; }
-    public void setEventDim(EventDimensions[] value) { this.eventDim = value; }
-
-    /**
-     * User related dimensions.
-     */
-    public UserDim getUserDim() { return userDim; }
-    public void setUserDim(UserDim value) { this.userDim = value; }
 }

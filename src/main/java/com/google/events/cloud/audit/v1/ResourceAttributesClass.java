@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,61 +19,19 @@ package com.google.events.cloud.audit.v1;
 import java.util.Map;
 
 /**
- * Resource attributes used in IAM condition evaluation. This field contains
- * resource attributes like resource type and resource name.
- *
- * To get the whole view of the attributes used in IAM
- * condition evaluation, the user must also look into
+ * Resource attributes used in IAM condition evaluation. This field contains resource
+ * attributes like resource type and resource name. To get the whole view of the attributes
+ * used in IAM condition evaluation, the user must also look into
  * `AuditLogData.request_metadata.request_attributes`.
  *
- * This message defines core attributes for a resource. A resource is an
- * addressable (named) entity provided by the destination service. For
- * example, a file stored on a network storage service.
+ * This message defines core attributes for a resource. A resource is an addressable (named)
+ * entity provided by the destination service. For example, a file stored on a network
+ * storage service.
  */
+@lombok.Data
 public class ResourceAttributesClass {
     private Map<String, String> labels;
     private String name;
     private String service;
     private String type;
-
-    /**
-     * The labels or tags on the resource, such as AWS resource tags and
-     * Kubernetes resource labels.
-     */
-    public Map<String, String> getLabels() { return labels; }
-    public void setLabels(Map<String, String> value) { this.labels = value; }
-
-    /**
-     * The stable identifier (name) of a resource on the `service`. A resource
-     * can be logically identified as "//{resource.service}/{resource.name}".
-     * The differences between a resource name and a URI are:
-     *
-     * *   Resource name is a logical identifier, independent of network
-     * protocol and API version. For example,
-     * `//pubsub.googleapis.com/projects/123/topics/news-feed`.
-     * *   URI often includes protocol and version information, so it can
-     * be used directly by applications. For example,
-     * `https://pubsub.googleapis.com/v1/projects/123/topics/news-feed`.
-     *
-     * See https://cloud.google.com/apis/design/resource_names for details.
-     */
-    public String getName() { return name; }
-    public void setName(String value) { this.name = value; }
-
-    /**
-     * The name of the service that this resource belongs to, such as
-     * `pubsub.googleapis.com`. The service may be different from the DNS
-     * hostname that actually serves the request.
-     */
-    public String getService() { return service; }
-    public void setService(String value) { this.service = value; }
-
-    /**
-     * The type of the resource. The syntax is platform-specific because
-     * different platforms define their resources differently.
-     *
-     * For Google APIs, the type format must be "{service}/{kind}".
-     */
-    public String getType() { return type; }
-    public void setType(String value) { this.type = value; }
 }

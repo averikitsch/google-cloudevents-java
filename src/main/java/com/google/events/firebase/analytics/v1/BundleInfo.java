@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,22 +19,10 @@ package com.google.events.firebase.analytics.v1;
 /**
  * Information regarding the bundle in which these events were uploaded.
  *
- * Message containing information regarding the bundle in which these
- * events were uploaded.
+ * Message containing information regarding the bundle in which these events were uploaded.
  */
+@lombok.Data
 public class BundleInfo {
-    private Long bundleSequenceID;
+    private Long bundleSequenceId;
     private Long serverTimestampOffsetMicros;
-
-    /**
-     * Monotonically increasing index for each bundle set by SDK.
-     */
-    public Long getBundleSequenceID() { return bundleSequenceID; }
-    public void setBundleSequenceID(Long value) { this.bundleSequenceID = value; }
-
-    /**
-     * Timestamp offset between collection time and upload time.
-     */
-    public Long getServerTimestampOffsetMicros() { return serverTimestampOffsetMicros; }
-    public void setServerTimestampOffsetMicros(Long value) { this.serverTimestampOffsetMicros = value; }
 }

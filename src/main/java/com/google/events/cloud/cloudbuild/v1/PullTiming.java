@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,26 +19,14 @@ package com.google.events.cloud.cloudbuild.v1;
 import java.time.OffsetDateTime;
 
 /**
- * Stores timing information for pulling this build step's
- * builder image only.
+ * Stores timing information for pulling this build step's builder image only.
  *
  * Stores timing information for pushing all artifact objects.
  *
  * Start and end times for a build execution phase.
  */
+@lombok.Data
 public class PullTiming {
     private OffsetDateTime endTime;
     private OffsetDateTime startTime;
-
-    /**
-     * End of time span.
-     */
-    public OffsetDateTime getEndTime() { return endTime; }
-    public void setEndTime(OffsetDateTime value) { this.endTime = value; }
-
-    /**
-     * Start of time span.
-     */
-    public OffsetDateTime getStartTime() { return startTime; }
-    public void setStartTime(OffsetDateTime value) { this.startTime = value; }
 }

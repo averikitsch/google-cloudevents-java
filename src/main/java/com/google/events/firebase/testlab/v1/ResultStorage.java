@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,41 +19,10 @@ package com.google.events.firebase.testlab.v1;
 /**
  * Locations where test results are stored.
  */
+@lombok.Data
 public class ResultStorage {
     private String gcsPath;
-    private String resultsURI;
+    private String resultsUri;
     private String toolResultsExecution;
     private String toolResultsHistory;
-
-    /**
-     * Location in Google Cloud Storage where test results are written to.
-     * In the form "gs://bucket/path/to/somewhere".
-     */
-    public String getGcsPath() { return gcsPath; }
-    public void setGcsPath(String value) { this.gcsPath = value; }
-
-    /**
-     * URI to the test results in the Firebase Web Console.
-     */
-    public String getResultsURI() { return resultsURI; }
-    public void setResultsURI(String value) { this.resultsURI = value; }
-
-    /**
-     * Tool Results execution resource containing test results. Format is
-     * `projects/{project_id}/histories/{history_id}/executions/{execution_id}`.
-     * Optional, can be omitted in erroneous test states.
-     * See https://firebase.google.com/docs/test-lab/reference/toolresults/rest
-     * for more information.
-     */
-    public String getToolResultsExecution() { return toolResultsExecution; }
-    public void setToolResultsExecution(String value) { this.toolResultsExecution = value; }
-
-    /**
-     * Tool Results history resource containing test results. Format is
-     * `projects/{project_id}/histories/{history_id}`.
-     * See https://firebase.google.com/docs/test-lab/reference/toolresults/rest
-     * for more information.
-     */
-    public String getToolResultsHistory() { return toolResultsHistory; }
-    public void setToolResultsHistory(String value) { this.toolResultsHistory = value; }
 }
