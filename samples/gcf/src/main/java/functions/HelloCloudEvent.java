@@ -18,27 +18,31 @@ package functions;
 
 import static io.cloudevents.core.CloudEventUtils.mapData;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.protobuf.ProtobufMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.cloud.functions.CloudEventsFunction;
-import com.google.events.cloud.audit.v1.LogEntryData;
-import com.google.events.cloud.audit.v1.LogEntryDataOrBuilder;
 
+import google.events.cloud.audit.v1.LogEntryData;
 import io.cloudevents.CloudEvent;
 import io.cloudevents.core.data.PojoCloudEventData;
+// import io.cloudevents.core.data.PojoCloudEventData;
+// import io.cloudevents.jackson.PojoCloudEventDataMapper;
 import io.cloudevents.jackson.PojoCloudEventDataMapper;
 
 // Uses the Cloud Event Jackson library to unmarshal CloudEvent data
 public class HelloCloudEvent implements CloudEventsFunction {
   private static final Logger logger = Logger.getLogger(HelloCloudEvent.class.getName());
   @Override
-  public void accept(CloudEvent event) {
+  public void accept(CloudEvent event) throws IOException {
     // Configure Jackson's ObjectMapper
     // ObjectMapper provides functionality for reading and writing JSON
     // Ignore unknown fields in CloudEvent data
+    ProtobufMapper mapper = new ProtobufMapper();
     ObjectMapper objectMapper =
         new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     // Register JavaTimeModule to handle timestamps
@@ -47,9 +51,13 @@ public class HelloCloudEvent implements CloudEventsFunction {
     if (event.getData() != null) { // && event.getType().contains("audit")
       // Unmarshal the data directly from the event
       PojoCloudEventData<LogEntryData> cloudEventData =
-          mapData(event, PojoCloudEventDataMapper.from(objectMapper, LogEntryData.class));
-      // Get unmarshalled data
-      LogEntryData data = cloudEventData.getValue();
+          mapData(event, PojoCloudEventDataMapper.from(mapper, LogEntryData.class));
+
+      // ProtobufSchema schemaWrapper = mapper.generateSchemaFor(LogEntryData.class);
+      // NativeProtobufSchema schema = schemaWrapper.getSource();
+      
+      // LogEntryData data = mapper.readerFor(LogEntryData.class).with(schema.forFirstType()).readValue(event.getData().toBytes());
+      // LogEntryData data = cloudEventData.getValue();
       logger.info(data.getResource().getType());
       logger.info(data.getProtoPayload().getAuthenticationInfo().getPrincipalEmail());
     }

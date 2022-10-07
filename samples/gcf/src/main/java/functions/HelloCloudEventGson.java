@@ -17,13 +17,15 @@
 package functions;
 
 
+import java.io.ByteArrayInputStream;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.time.OffsetDateTime;
 import java.util.logging.Logger;
 
+import com.google.api.gax.httpjson.ProtoMessageResponseParser;
 import com.google.cloud.functions.CloudEventsFunction;
-import com.google.events.cloud.audit.v1.LogEntryData;
+import google.events.cloud.audit.v1.LogEntryData;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -56,10 +58,13 @@ public class HelloCloudEventGson implements CloudEventsFunction {
 
     if (event.getData() != null ) { // && event.getType().contains("audit")
       // Get serialized data from CloudEvent
-      String cloudEventData = new String(event.getData().toBytes(), StandardCharsets.UTF_8);
+      // String cloudEventData = new String(event.getData().toBytes(), StandardCharsets.UTF_8);
       // Deserialize data to unmarshal the data
-      logger.info(cloudEventData);
-      LogEntryData data = gson.fromJson(cloudEventData, LogEntryData.class);
+      // logger.info(cloudEventData);
+      // LogEntryData data = gson.fromJson(cloudEventData, LogEntryData.class);
+      ProtoMessageResponseParser<LogEntryData> parser =
+                ProtoMessageResponseParser.<LogEntryData>newBuilder().setDefaultInstance(LogEntryData.getDefaultInstance()).build();
+      LogEntryData data = parser.parse(new ByteArrayInputStream(event.getData().toBytes()));
       logger.info(data.toString());
       logger.info(data.getProtoPayload().getAuthenticationInfo().getPrincipalEmail());
       logger.info(data.getResource().getType());
