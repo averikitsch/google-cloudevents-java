@@ -86,7 +86,8 @@ public class MessagePublishedDataTest {
       ReferenceEventData.Builder builder = ReferenceEventData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       ReferenceEventData data = builder.build();
-      assertEquals("ok", data.getDelta());
+      assert(data.getDelta() != null);
+      assert(data.getData().toString() != null);
     }
   }
 
@@ -97,7 +98,8 @@ public class MessagePublishedDataTest {
       AuthEventData.Builder builder = AuthEventData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       AuthEventData data = builder.build();
-      assertEquals("ok", data.getEmail());
+      assertEquals("test@nowhere.com", data.getEmail());
+      assert(data.getMetadata().getCreateTime().toString() != null);
     }
   }
 
@@ -108,7 +110,8 @@ public class MessagePublishedDataTest {
       RemoteConfigEventData.Builder builder = RemoteConfigEventData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       RemoteConfigEventData data = builder.build();
-      assertEquals("ok", data.getDescription());
+      assert(data.getDescription() != null);
+      assert(data.getUpdateType().toString() != null);
     }
   }
 
@@ -119,7 +122,7 @@ public class MessagePublishedDataTest {
       AnalyticsLogData.Builder builder = AnalyticsLogData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       AnalyticsLogData data = builder.build();
-      assertEquals("ok", data.getEventDimCount());
+      assertEquals(1, data.getEventDimCount());
     }
   }
 
@@ -130,7 +133,8 @@ public class MessagePublishedDataTest {
       BuildEventData.Builder builder = BuildEventData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       BuildEventData data = builder.build();
-      assertEquals("ok", data.getBuildTriggerId());
+      assertEquals("cupidatat", data.getBuildTriggerId());
+      assert(data.getArtifacts().getImagesCount() >=0);
     }
   }
 
@@ -141,7 +145,7 @@ public class MessagePublishedDataTest {
       SchedulerJobData.Builder builder = SchedulerJobData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       SchedulerJobData data = builder.build();
-      assertEquals("ok", data.getCustomData().toString("UTF-8"));
+      assertEquals("my base64 data", data.getCustomData().toStringUtf8());
     }
   }
 
@@ -152,7 +156,7 @@ public class MessagePublishedDataTest {
       StorageObjectData.Builder builder = StorageObjectData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       StorageObjectData data = builder.build();
-      assertEquals("ok", data.getBucket());
+      assert(data.getBucket().contains("-bucket"));
     }
   }
 
@@ -164,8 +168,8 @@ public class MessagePublishedDataTest {
       LogEntryData.Builder builder = LogEntryData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       LogEntryData data = builder.build();
-      assertEquals("ok", data.getTimestamp().toString());
-      assertEquals("", data.getProtoPayload().getMethodName());
+      assert(data.getLogName().contains("projects/test-project/logs/cloudaudit.googleapis.com"));
+      assert(data.getProtoPayload().getMethodName() != null);
     }
   }
 
@@ -176,7 +180,8 @@ public class MessagePublishedDataTest {
       MessagePublishedData.Builder builder = MessagePublishedData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       MessagePublishedData data = builder.build();
-      assertEquals("ok", data.getMessage().getData());
+      assertEquals("projects/my-project/subscriptions/my-subscription", data.getSubscription());
+      assert(data.getMessage().getData().toString() != null);
     }
   }
 }
