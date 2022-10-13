@@ -35,7 +35,7 @@ public interface LogEntryDataOrBuilder extends
    * the error.
    * </pre>
    *
-   * <code>.com.google.api.MonitoredResource resource = 8;</code>
+   * <code>.google.api.MonitoredResource resource = 8;</code>
    * @return Whether the resource field is set.
    */
   boolean hasResource();
@@ -47,7 +47,7 @@ public interface LogEntryDataOrBuilder extends
    * the error.
    * </pre>
    *
-   * <code>.com.google.api.MonitoredResource resource = 8;</code>
+   * <code>.google.api.MonitoredResource resource = 8;</code>
    * @return The resource.
    */
   com.google.api.MonitoredResource getResource();
@@ -59,7 +59,7 @@ public interface LogEntryDataOrBuilder extends
    * the error.
    * </pre>
    *
-   * <code>.com.google.api.MonitoredResource resource = 8;</code>
+   * <code>.google.api.MonitoredResource resource = 8;</code>
    */
   com.google.api.MonitoredResourceOrBuilder getResourceOrBuilder();
 

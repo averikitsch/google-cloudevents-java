@@ -84,7 +84,7 @@ public class MessagePublishedDataTest {
     for (String file : getFiles("ReferenceEventData")) {
       String json = readFileAsString(file);
       ReferenceEventData.Builder builder = ReferenceEventData.newBuilder();
-      JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
+      JsonFormat.parser().merge(json, builder);
       ReferenceEventData data = builder.build();
       assert(data.getDelta() != null);
       assert(data.getData().toString() != null);
@@ -96,7 +96,7 @@ public class MessagePublishedDataTest {
     for (String file : getFiles("AuthEventData")) {
       String json = readFileAsString(file);
       AuthEventData.Builder builder = AuthEventData.newBuilder();
-      JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
+      JsonFormat.parser().merge(json, builder);
       AuthEventData data = builder.build();
       assertEquals("test@nowhere.com", data.getEmail());
       assert(data.getMetadata().getCreateTime().toString() != null);
@@ -108,7 +108,7 @@ public class MessagePublishedDataTest {
     for (String file : getFiles("RemoteConfigEventData")) {
       String json = readFileAsString(file);
       RemoteConfigEventData.Builder builder = RemoteConfigEventData.newBuilder();
-      JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
+      JsonFormat.parser().merge(json, builder);
       RemoteConfigEventData data = builder.build();
       assert(data.getDescription() != null);
       assert(data.getUpdateType().toString() != null);
@@ -120,7 +120,7 @@ public class MessagePublishedDataTest {
     for (String file : getFiles("AnalyticsLogData")) {
       String json = readFileAsString(file);
       AnalyticsLogData.Builder builder = AnalyticsLogData.newBuilder();
-      JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
+      JsonFormat.parser().merge(json, builder);
       AnalyticsLogData data = builder.build();
       assertEquals(1, data.getEventDimCount());
     }
@@ -131,7 +131,7 @@ public class MessagePublishedDataTest {
     for (String file : getFiles("BuildEventData")) {
       String json = readFileAsString(file);
       BuildEventData.Builder builder = BuildEventData.newBuilder();
-      JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
+      JsonFormat.parser().merge(json, builder);
       BuildEventData data = builder.build();
       assertEquals("cupidatat", data.getBuildTriggerId());
       assert(data.getArtifacts().getImagesCount() >=0);
@@ -143,7 +143,7 @@ public class MessagePublishedDataTest {
     for (String file : getFiles("SchedulerJobData")) {
       String json = readFileAsString(file);
       SchedulerJobData.Builder builder = SchedulerJobData.newBuilder();
-      JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
+      JsonFormat.parser().merge(json, builder);
       SchedulerJobData data = builder.build();
       assertEquals("my base64 data", data.getCustomData().toStringUtf8());
     }
@@ -154,7 +154,7 @@ public class MessagePublishedDataTest {
     for (String file : getFiles("StorageObjectData")) {
       String json = readFileAsString(file);
       StorageObjectData.Builder builder = StorageObjectData.newBuilder();
-      JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
+      JsonFormat.parser().merge(json, builder);
       StorageObjectData data = builder.build();
       assert(data.getBucket().contains("-bucket"));
     }
@@ -169,7 +169,7 @@ public class MessagePublishedDataTest {
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       LogEntryData data = builder.build();
       assert(data.getLogName().contains("projects/test-project/logs/cloudaudit.googleapis.com"));
-      assert(data.getProtoPayload().getMethodName() != null);
+      assertEquals("robot@test-project.iam.gserviceaccount.com", data.getProtoPayload().getAuthenticationInfo().getPrincipalEmail());
     }
   }
 

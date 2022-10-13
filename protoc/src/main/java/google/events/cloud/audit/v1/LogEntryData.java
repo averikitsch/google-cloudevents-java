@@ -120,7 +120,7 @@ private static final long serialVersionUID = 0L;
    * the error.
    * </pre>
    *
-   * <code>.com.google.api.MonitoredResource resource = 8;</code>
+   * <code>.google.api.MonitoredResource resource = 8;</code>
    * @return Whether the resource field is set.
    */
   @java.lang.Override
@@ -135,7 +135,7 @@ private static final long serialVersionUID = 0L;
    * the error.
    * </pre>
    *
-   * <code>.com.google.api.MonitoredResource resource = 8;</code>
+   * <code>.google.api.MonitoredResource resource = 8;</code>
    * @return The resource.
    */
   @java.lang.Override
@@ -150,7 +150,7 @@ private static final long serialVersionUID = 0L;
    * the error.
    * </pre>
    *
-   * <code>.com.google.api.MonitoredResource resource = 8;</code>
+   * <code>.google.api.MonitoredResource resource = 8;</code>
    */
   @java.lang.Override
   public com.google.api.MonitoredResourceOrBuilder getResourceOrBuilder() {
@@ -1428,7 +1428,7 @@ private static final long serialVersionUID = 0L;
      * the error.
      * </pre>
      *
-     * <code>.com.google.api.MonitoredResource resource = 8;</code>
+     * <code>.google.api.MonitoredResource resource = 8;</code>
      * @return Whether the resource field is set.
      */
     public boolean hasResource() {
@@ -1442,7 +1442,7 @@ private static final long serialVersionUID = 0L;
      * the error.
      * </pre>
      *
-     * <code>.com.google.api.MonitoredResource resource = 8;</code>
+     * <code>.google.api.MonitoredResource resource = 8;</code>
      * @return The resource.
      */
     public com.google.api.MonitoredResource getResource() {
@@ -1460,7 +1460,7 @@ private static final long serialVersionUID = 0L;
      * the error.
      * </pre>
      *
-     * <code>.com.google.api.MonitoredResource resource = 8;</code>
+     * <code>.google.api.MonitoredResource resource = 8;</code>
      */
     public Builder setResource(com.google.api.MonitoredResource value) {
       if (resourceBuilder_ == null) {
@@ -1483,7 +1483,7 @@ private static final long serialVersionUID = 0L;
      * the error.
      * </pre>
      *
-     * <code>.com.google.api.MonitoredResource resource = 8;</code>
+     * <code>.google.api.MonitoredResource resource = 8;</code>
      */
     public Builder setResource(
         com.google.api.MonitoredResource.Builder builderForValue) {
@@ -1504,7 +1504,7 @@ private static final long serialVersionUID = 0L;
      * the error.
      * </pre>
      *
-     * <code>.com.google.api.MonitoredResource resource = 8;</code>
+     * <code>.google.api.MonitoredResource resource = 8;</code>
      */
     public Builder mergeResource(com.google.api.MonitoredResource value) {
       if (resourceBuilder_ == null) {
@@ -1529,7 +1529,7 @@ private static final long serialVersionUID = 0L;
      * the error.
      * </pre>
      *
-     * <code>.com.google.api.MonitoredResource resource = 8;</code>
+     * <code>.google.api.MonitoredResource resource = 8;</code>
      */
     public Builder clearResource() {
       if (resourceBuilder_ == null) {
@@ -1550,7 +1550,7 @@ private static final long serialVersionUID = 0L;
      * the error.
      * </pre>
      *
-     * <code>.com.google.api.MonitoredResource resource = 8;</code>
+     * <code>.google.api.MonitoredResource resource = 8;</code>
      */
     public com.google.api.MonitoredResource.Builder getResourceBuilder() {
       
@@ -1565,7 +1565,7 @@ private static final long serialVersionUID = 0L;
      * the error.
      * </pre>
      *
-     * <code>.com.google.api.MonitoredResource resource = 8;</code>
+     * <code>.google.api.MonitoredResource resource = 8;</code>
      */
     public com.google.api.MonitoredResourceOrBuilder getResourceOrBuilder() {
       if (resourceBuilder_ != null) {
@@ -1583,7 +1583,7 @@ private static final long serialVersionUID = 0L;
      * the error.
      * </pre>
      *
-     * <code>.com.google.api.MonitoredResource resource = 8;</code>
+     * <code>.google.api.MonitoredResource resource = 8;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.api.MonitoredResource, com.google.api.MonitoredResource.Builder, com.google.api.MonitoredResourceOrBuilder> 
