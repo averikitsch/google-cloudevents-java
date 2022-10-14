@@ -180,6 +180,7 @@ public class MessagePublishedDataTest {
       MessagePublishedData.Builder builder = MessagePublishedData.newBuilder();
       JsonFormat.parser().ignoringUnknownFields().merge(json, builder);
       MessagePublishedData data = builder.build();
+      // System.out.println(MessagePublishedData.getDescriptor().getFullName());
       assertEquals("projects/my-project/subscriptions/my-subscription", data.getSubscription());
       assert(data.getMessage().getData().toString() != null);
     }
