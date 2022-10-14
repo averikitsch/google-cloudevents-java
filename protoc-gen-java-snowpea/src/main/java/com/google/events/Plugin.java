@@ -1,20 +1,26 @@
 package com.google.events;
+
 import com.google.protobuf.DescriptorProtos;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse;
 import com.google.protobuf.compiler.PluginProtos.CodeGeneratorRequest;
-
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
+import org.apache.velocity.app.VelocityEngine;
+import java.io.StringWriter;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.time.Year;
 
 public class Plugin {
 
-    public static void main(String[] args) throws IOException, Descriptors.DescriptorValidationException {
+  public static void main(String[] args) throws IOException, Descriptors.DescriptorValidationException {
         // Plugin receives a serialized CodeGeneratorRequest via stdin
         CodeGeneratorRequest request = CodeGeneratorRequest.parseFrom(System.in);
 
@@ -30,13 +36,6 @@ public class Plugin {
                     fp.getDependencyList().stream().map(filesByName::get).toArray(Descriptors.FileDescriptor[]::new);
 
             Descriptors.FileDescriptor fd  = Descriptors.FileDescriptor.buildFrom(fp, dependencies);
-            
-            // System.out.println("start");
-            // System.out.println(fd.getFullName());
-            // List<Descriptors.Descriptor> messages = fd.getMessageTypes();
-            // messages.stream().forEach(s -> System.out.println(s.getName())); 
-            // System.out.println("end");
-            // System.out.println("");
             filesByName.put(
                     fp.getName(),
                     fd
@@ -52,9 +51,15 @@ public class Plugin {
                 continue;
             }
             Descriptors.FileDescriptor fd = filesByName.get(fileName);
-            response.addFileBuilder()
-                    .setName(fd.getFullName().replaceAll("\\.proto$", ".java"))
-                    .setContent(generateFileContent(fd));
+            for (Descriptors.Descriptor messageType : fd.getMessageTypes()) {
+                if (messageType.getName().endsWith("Data")) {
+                    response.addFileBuilder()
+                        .setName(fd.getFullName().replaceAll("data.proto", messageType.getName() + ".java"))
+                        .setContent(generateTestFile(fd, messageType));
+                        // .setName(fd.getFullName().replaceAll("\\.proto$", ".java"))
+                        // .setContent(generateFileContent(fd));
+                }
+            }
         }
 
         // Serialize the response to stdout
@@ -62,53 +67,66 @@ public class Plugin {
         response.build().writeTo(System.out);
     }
 
-    private static String generateFileContent(Descriptors.FileDescriptor fd) {
-        StringBuilder sb = new StringBuilder();
-        for (Descriptors.Descriptor messageType : fd.getMessageTypes()) {
-            generateMessage(sb, messageType, 0);
-        }
-        return sb.toString();
+  private static String generateTestFile(Descriptors.FileDescriptor fd, Descriptors.Descriptor messageType) {
+    String inputTemplate = "./src/main/resources/classTemplate.vm";
+    VelocityEngine velocityEngine = new VelocityEngine();
+    velocityEngine.init();
+    VelocityContext context = new VelocityContext();
+
+
+    String packageName = fd.getPackage();
+    String className = messageType.getName();
+    context.put("packageName", packageName);
+    context.put("className", className);
+    context.put("year", Year.now().getValue());
+
+    StringWriter writer = new StringWriter();
+    Velocity.mergeTemplate(inputTemplate, "UTF-8", context, writer);
+
+    return writer.toString();
+  }
+
+  private static String generateFileContent(Descriptors.FileDescriptor fd) {
+    StringBuilder sb = new StringBuilder();
+    for (Descriptors.Descriptor messageType : fd.getMessageTypes()) {
+      generateMessage(sb, messageType, 0);
     }
+    return sb.toString();
+  }
 
-    private static String renderType(Descriptors.FieldDescriptor fd) {
-        if (fd.isRepeated()) {
-            return "List<" + renderSingleType(fd) + ">";
-        } else {
-            return renderSingleType(fd);
-        }
+  private static String renderType(Descriptors.FieldDescriptor fd) {
+    if (fd.isRepeated()) {
+      return "List<" + renderSingleType(fd) + ">";
+    } else {
+      return renderSingleType(fd);
     }
+  }
 
-    private static String renderSingleType(Descriptors.FieldDescriptor fd) {
-        if (fd.getType() != Descriptors.FieldDescriptor.Type.MESSAGE) {
-            return fd.getType().toString();
-        } else {
-            return fd.getMessageType().getName();
-        }
+  private static String renderSingleType(Descriptors.FieldDescriptor fd) {
+    if (fd.getType() != Descriptors.FieldDescriptor.Type.MESSAGE) {
+      return fd.getType().toString();
+    } else {
+      return fd.getMessageType().getName();
     }
+  }
 
-    private static void generateMessage(StringBuilder sb, Descriptors.Descriptor messageType, int indent) {
-        sb.append(String.join("", Collections.nCopies(indent, " ")));
-        sb.append("|- ");
-        sb.append(messageType.getName());
-        sb.append("(");
+  private static void generateMessage(StringBuilder sb, Descriptors.Descriptor messageType,
+      int indent) {
+    sb.append(String.join("", Collections.nCopies(indent, " ")));
+    sb.append("|- ");
+    sb.append(messageType.getName());
+    sb.append("(");
 
-        sb.append(
-            String.join(
-                ", ", 
-                messageType
-                    .getFields()
-                    .stream()
-                    .map(field -> field.getName() + ": " + renderType(field))
-                    .collect(Collectors.joining(", "))
-            )
-        );
-        sb.append(")");
-        sb.append(System.getProperty("line.separator"));
+    sb.append(String.join(", ",
+        messageType.getFields().stream().map(field -> field.getName() + ": " + renderType(field))
+            .collect(Collectors.joining(", "))));
+    sb.append(")");
+    sb.append(System.getProperty("line.separator"));
 
-        // recurse for nested messages.
-        sb.append(String.join("", Collections.nCopies(indent, " ")));
-        for (Descriptors.Descriptor nestedType : messageType.getNestedTypes()) {
-            generateMessage(sb, nestedType, indent + 3);
-        }
+    // recurse for nested messages.
+    sb.append(String.join("", Collections.nCopies(indent, " ")));
+    for (Descriptors.Descriptor nestedType : messageType.getNestedTypes()) {
+      generateMessage(sb, nestedType, indent + 3);
     }
+  }
 }
