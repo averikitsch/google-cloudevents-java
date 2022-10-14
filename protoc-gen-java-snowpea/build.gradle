@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.protobuf:protobuf-java:3.6.1'
+    implementation 'com.google.protobuf:protobuf-java:3.21.7'
     implementation 'org.apache.velocity:velocity-engine-core:2.2'
     // compile "com.google.protobuf:protobuf-java:3.6.1"
 }

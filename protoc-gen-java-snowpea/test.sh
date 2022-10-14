@@ -18,8 +18,9 @@ protoc --plugin=protoc-gen-java-snowpea=build/install/protoc-gen-java-snowpea/bi
 -I $PROTO_SRC \
 -I $THIRD_P \
 --java-snowpea_out . \
-$PROTO_SRC/google/events/cloud/pubsub/v1/data.proto 
-# $(find $PROTO_SRC/google/events/cloud/pubsub/ -name "*.proto")
+--experimental_allow_proto3_optional \
+$(find $PROTO_SRC/ -name "*.proto")
+# $PROTO_SRC/google/events/cloud/pubsub/v1/data.proto 
 
 
 # protoc --plugin=protoc-gen-example=../../../test_projects/protoc-plugin-in-java/build/install/myplugin/bin/myplugin \

@@ -1,0 +1,4 @@
+|- StorageObjectData(content_encoding: STRING, content_disposition: STRING, cache_control: STRING, content_language: STRING, metageneration: INT64, time_deleted: Timestamp, content_type: STRING, size: INT64, time_created: Timestamp, crc32c: STRING, component_count: INT32, md5_hash: STRING, etag: STRING, updated: Timestamp, storage_class: STRING, kms_key_name: STRING, time_storage_class_updated: Timestamp, temporary_hold: BOOL, retention_expiration_time: Timestamp, metadata: List<MetadataEntry>, event_based_hold: BOOL, name: STRING, id: STRING, bucket: STRING, generation: INT64, customer_encryption: CustomerEncryption, media_link: STRING, self_link: STRING, kind: STRING)
+   |- CustomerEncryption(encryption_algorithm: STRING, key_sha256: STRING)
+      |- MetadataEntry(key: STRING, value: STRING)
+   

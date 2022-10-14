@@ -67,7 +67,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\protoc-gen-java-snowpea.jar;%APP_HOME%\lib\protobuf-java-3.6.1.jar;%APP_HOME%\lib\velocity-engine-core-2.2.jar;%APP_HOME%\lib\commons-lang3-3.9.jar;%APP_HOME%\lib\slf4j-api-1.7.30.jar
+set CLASSPATH=%APP_HOME%\lib\protoc-gen-java-snowpea.jar;%APP_HOME%\lib\protobuf-java-3.21.7.jar;%APP_HOME%\lib\velocity-engine-core-2.2.jar;%APP_HOME%\lib\commons-lang3-3.9.jar;%APP_HOME%\lib\slf4j-api-1.7.30.jar
 
 
 @rem Execute protoc-gen-java-snowpea

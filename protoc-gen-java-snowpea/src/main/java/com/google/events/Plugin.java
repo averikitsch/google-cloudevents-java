@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Plugin {
@@ -29,7 +30,13 @@ public class Plugin {
                     fp.getDependencyList().stream().map(filesByName::get).toArray(Descriptors.FileDescriptor[]::new);
 
             Descriptors.FileDescriptor fd  = Descriptors.FileDescriptor.buildFrom(fp, dependencies);
-
+            
+            // System.out.println("start");
+            // System.out.println(fd.getFullName());
+            // List<Descriptors.Descriptor> messages = fd.getMessageTypes();
+            // messages.stream().forEach(s -> System.out.println(s.getName())); 
+            // System.out.println("end");
+            // System.out.println("");
             filesByName.put(
                     fp.getName(),
                     fd
@@ -37,16 +44,21 @@ public class Plugin {
         }
 
         // Building the response
+        // output to java files under test folder
+        // change file name to test file name
         CodeGeneratorResponse.Builder response = CodeGeneratorResponse.newBuilder();
-
         for (String fileName : request.getFileToGenerateList()) {
+            if (!fileName.endsWith("data.proto")) {  // Ignore 3P and non-data protos
+                continue;
+            }
             Descriptors.FileDescriptor fd = filesByName.get(fileName);
             response.addFileBuilder()
-                    .setName(fd.getFullName().replaceAll("\\.proto$", ".txt"))
+                    .setName(fd.getFullName().replaceAll("\\.proto$", ".java"))
                     .setContent(generateFileContent(fd));
         }
 
         // Serialize the response to stdout
+        response.setSupportedFeatures((long) 1);
         response.build().writeTo(System.out);
     }
 
