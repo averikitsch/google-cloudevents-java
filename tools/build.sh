@@ -82,7 +82,7 @@ _generate() {
         --java_out=$PROTOC_OUT \
         $proto_src
 
-    # echo "# - validation tests"
+    echo "# - validation tests"
     # $PROTOC_PATH \
     #     --plugin=protoc-gen-java-snowpea=protoc-gen-java-snowpea/startup-script.sh \
     #     --java-snowpea_out $TEST_GEN_OUT \
