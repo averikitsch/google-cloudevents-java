@@ -75,7 +75,7 @@ jobs:
         uses: googleapis/code-suggester@v4
         env:
           # Provided by the GitHub Automation team
-          ACCESS_TOKEN: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           command: pr
           upstream_owner: ${{ github.repository_owner }}
