@@ -60,7 +60,7 @@ jobs:
 
       - name: View generator output
         working-directory: ${{ env.LIBRARY_CHECKOUT_PATH }}
-        run: echo (ls -R google-cloudevent-types/)
+        run: echo $(ls -R google-cloudevent-types/)
 
       - name: Get source version
         id: source-version
